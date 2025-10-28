@@ -14,7 +14,9 @@ inputs:
   forbid-data-id:
     description: 'Forbid the use of the data-id attribute'
     default: "true"
-
+  exit-on-violation:
+    description: 'Exit with code 1 when finding any violations'
+    default: "true"
 #outputs:
 #  random-number:
 #    description: "Random number"
@@ -37,9 +39,12 @@ runs:
           --target-path $TARGET_PATH \
           --project-alias $PROJECT_ALIAS \
           --ignore-hidden $IGNORE_HIDDEN \
-          --forbid-data-id $FORBID_DATA_ID"
+          --forbid-data-id $FORBID_DATA_ID \
+          --exit-on-violation $EXIT_ON_VIOLATION \
+        "
       env:
         TARGET_PATH: ${{ inputs.target-path }}
         PROJECT_ALIAS: ${{ inputs.project-alias }}
         IGNORE_HIDDEN: ${{ inputs.ignore-hidden }}
         FORBID_DATA_ID: ${{ inputs.forbid-data-id }}
+        EXIT_ON_VIOLATION: ${{ inputs.exit-on-violation }}

@@ -27,7 +27,7 @@ class Linter(
             PrintMessage(moduleMatches.joinToString("\n\n"), 1, true)
             println(moduleMatches.joinToString("\n\n"))
         }
-        exitProcess(if (anyMatches) 1 else 0)
+        exitProcess(if (anyMatches && options.exitOnViolation) 1 else 0)
     }
 
     fun getAllFiles(): ArrayList<File> {

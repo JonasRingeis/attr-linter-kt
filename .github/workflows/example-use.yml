@@ -1,3 +1,4 @@
+name: Example Usage
 on:
   push:
     branches: [ main ]
@@ -13,3 +14,4 @@ jobs:
         with:
           project-alias: 'ci'
           target-path: './test-project'
+          exit-on-violation: false
