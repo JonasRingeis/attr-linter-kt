@@ -41,7 +41,7 @@ class Linter(
 
     fun getAllFilesRec(dir: File, filter: FileFilter): ArrayList<File> {
         if (!dir.exists()) {
-            throw FileNotFoundException("Directory does not exist")
+            return arrayListOf()
         }
 
         val dirChildren = dir.listFiles(filter) ?: arrayOf<File>()
