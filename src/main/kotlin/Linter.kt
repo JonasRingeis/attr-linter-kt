@@ -12,6 +12,10 @@ class Linter(
 ) {
 
     fun lint() {
+        val inCi = System.getenv("CI")?.lowercase() == "true"
+        println(inCi)
+        println(System.getenv("CI")?.lowercase())
+
         val allFiles = getAllFiles()
         runModules(allFiles)
     }
