@@ -12,3 +12,4 @@ jobs:
       - uses: JonasRingeis/attr-linter-kt@main
         with:
           project-alias: 'ci'
+          path: 'test-project'
