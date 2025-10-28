@@ -28,7 +28,7 @@ runs:
       uses: actions/setup-java@v4
       with:
         distribution: 'corretto'
-        java-version: 21.0.6.7.1
+        java-version: 21
         cache: gradle
     - name: Execute Linter
       shell: bash
