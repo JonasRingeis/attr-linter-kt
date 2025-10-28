@@ -24,6 +24,12 @@ runs:
   steps:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'corretto'
+        java-version: 21.0.6.7.1
+        cache: gradle
     - name: Execute Linter
       shell: bash
       run: |
