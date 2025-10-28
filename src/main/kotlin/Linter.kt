@@ -34,7 +34,7 @@ class Linter(
         val dir = File(options.path)
         val fileFilter = FileFilter({ file ->
             (options.ignoreHidden && !file.isHidden)
-            && file.name.endsWith(".twig")
+            && (file.isDirectory || file.name.endsWith(".twig"))
         })
         return getAllFilesRec(dir, fileFilter)
     }
