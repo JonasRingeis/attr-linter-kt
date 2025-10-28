@@ -28,7 +28,7 @@ class Linter(
                 anyMatches = true
             }
 
-            PrintMessage(moduleMatches.joinToString("\n\n"), 1, true)
+            println(moduleMatches.first().toString())
             println(moduleMatches.joinToString("\n\n"))
         }
         exitProcess(if (anyMatches && options.exitOnViolation) 1 else 0)
