@@ -28,12 +28,12 @@ runs:
       shell: bash
       run: |
         ./gradlew run \
-          --path "$PATH" \
+          --path "LINTER_$PATH" \
           --projectAlias "$PROJECT_ALIAS" \
           --ignoreHidden "$IGNORE_HIDDEN" \
           --forbidDataId "$FORBID_DATA_ID"
       env:
-        PATH: ${{ inputs.path }}
+        LINTER_PATH: ${{ inputs.path }}
         PROJECT_ALIAS: ${{ inputs.project-alias }}
         IGNORE_HIDDEN: ${{ inputs.ignore-hidden }}
         FORBID_DATA_ID: ${{ inputs.forbid-data-id }}
