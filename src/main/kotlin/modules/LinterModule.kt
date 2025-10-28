@@ -15,10 +15,9 @@ data class LinterModuleResult (
 ) {
     override fun toString(): String {
         val inCi = System.getenv("CI")?.lowercase() == "true"
-        println("isInCI in LinterModuleResult: $inCi")
 
         return if (inCi) {
-            "Illegal attribute '$attribute' in file '$filename' at line $lineNumber\n$fullLine"
-        } else "::error file=$filename,line=$lineNumber::Illegal attribute '$attribute' in file '$filename' at line $lineNumber.\n$fullLine"
+            "::error file=$filename,line=$lineNumber::Illegal attribute '$attribute' in file '$filename' at line $lineNumber.\n$fullLine"
+        } else "Illegal attribute '$attribute' in file '$filename' at line $lineNumber\n$fullLine"
     }
 }

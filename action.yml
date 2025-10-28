@@ -35,7 +35,7 @@ runs:
     - name: Execute Linter
       shell: bash
       run: |
-        ./gradlew run -DCI=true --args=" \
+        ./gradlew run --args=" \
           --target-path $TARGET_PATH \
           --project-alias $PROJECT_ALIAS \
           --ignore-hidden $IGNORE_HIDDEN \

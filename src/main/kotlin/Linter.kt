@@ -12,10 +12,6 @@ class Linter(
 ) {
 
     fun lint() {
-        val inCi = System.getenv("CI")?.lowercase() == "true"
-        println(inCi)
-        println(System.getenv("CI")?.lowercase())
-
         val allFiles = getAllFiles()
         runModules(allFiles)
     }
@@ -28,7 +24,6 @@ class Linter(
                 anyMatches = true
             }
 
-            println(moduleMatches.first().toString())
             println(moduleMatches.joinToString("\n\n"))
         }
         exitProcess(if (anyMatches && options.exitOnViolation) 1 else 0)
