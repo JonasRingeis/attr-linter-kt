@@ -7,12 +7,12 @@ import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.boolean
 
 class Cli : CliktCommand() {
+    val path: String by option().default("./").help("The path the linter is checking")
+
     val projectAlias: String by option().required().help("Project alias used in 'data-fti-xx-' attributes")
 
-    val ignoreHidden: Boolean by option().boolean().default(true).help("Ignore all files and directories that hidden")
+    val ignoreHidden: Boolean by option().boolean().default(true).help("Ignore all files and directories that are hidden")
     val forbidDataId: Boolean by option().boolean().default(true).help("Forbid the use of the data-id attribute")
-
-    val path: String by option().default("./").help("The path the linter is checking")
 
 
     override fun run() {
