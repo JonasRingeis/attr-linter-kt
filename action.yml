@@ -2,7 +2,7 @@ name: 'Execute Attribute Liner'
 description: 'Lint your projects attributes.'
 
 inputs:
-  path:
+  target-path:
     description: 'The path the linter is checking'
     default: "./"
   project-alias:
@@ -34,12 +34,12 @@ runs:
       shell: bash
       run: |
         ./gradlew run --args=" \
-          --path LINTER_$PATH \
+          --target-path $TARGET_PATH \
           --project-alias $PROJECT_ALIAS \
           --ignore-hidden $IGNORE_HIDDEN \
           --forbid-data-id $FORBID_DATA_ID"
       env:
-        LINTER_PATH: ${{ inputs.path }}
+        TARGET_PATH: ${{ inputs.target-path }}
         PROJECT_ALIAS: ${{ inputs.project-alias }}
         IGNORE_HIDDEN: ${{ inputs.ignore-hidden }}
         FORBID_DATA_ID: ${{ inputs.forbid-data-id }}

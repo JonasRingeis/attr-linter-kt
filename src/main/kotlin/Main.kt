@@ -7,7 +7,7 @@ import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.boolean
 
 class Cli : CliktCommand() {
-    val path: String by option().default("./").help("The path the linter is checking")
+    val targetPath: String by option().default("./").help("The path the linter is checking")
 
     val projectAlias: String by option().required().help("Project alias used in 'data-fti-xx-' attributes")
 

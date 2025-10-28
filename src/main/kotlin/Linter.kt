@@ -31,7 +31,7 @@ class Linter(
     }
 
     fun getAllFiles(): ArrayList<File> {
-        val dir = File(options.path)
+        val dir = File(options.targetPath)
         val fileFilter = FileFilter({ file ->
             (options.ignoreHidden && !file.isHidden)
             && (file.isDirectory || file.name.endsWith(".twig"))
