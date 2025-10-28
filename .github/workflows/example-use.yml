@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: ../../action.yml
+      - uses: JonasRingeis/attr-linter-kt/action.yml@main
         with:
           project-alias: 'ci'
