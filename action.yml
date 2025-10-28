@@ -27,11 +27,11 @@ runs:
     - name: Execute Linter
       shell: bash
       run: |
-        ./gradlew run \
-          --path "LINTER_$PATH" \
-          --projectAlias "$PROJECT_ALIAS" \
-          --ignoreHidden "$IGNORE_HIDDEN" \
-          --forbidDataId "$FORBID_DATA_ID"
+        ./gradlew run --args=" \
+          --path LINTER_$PATH \
+          --project-alias $PROJECT_ALIAS \
+          --ignore-hidden $IGNORE_HIDDEN \
+          --forbid-data-id $FORBID_DATA_ID"
       env:
         LINTER_PATH: ${{ inputs.path }}
         PROJECT_ALIAS: ${{ inputs.project-alias }}
