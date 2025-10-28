@@ -1,4 +1,3 @@
-import com.github.ajalt.clikt.core.PrintMessage
 import modules.DataAttribute
 import modules.LinterModule
 import java.io.File
