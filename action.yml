@@ -35,7 +35,7 @@ runs:
     - name: Execute Linter
       shell: bash
       run: |
-        ./gradlew run --args=" \
+        ./gradlew run -DCI=true --args=" \
           --target-path $TARGET_PATH \
           --project-alias $PROJECT_ALIAS \
           --ignore-hidden $IGNORE_HIDDEN \
@@ -49,5 +49,3 @@ runs:
         FORBID_DATA_ID: ${{ inputs.forbid-data-id }}
         EXIT_ON_VIOLATION: ${{ inputs.exit-on-violation }}
         CI: true
-    - run: echo ${{ inputs }}
-      shell: bash
