@@ -16,6 +16,7 @@ class Cli : CliktCommand() {
     val exitOnViolation: Boolean by option().boolean().default(true).help("Exit with code 1 when finding any violations")
 
     override fun run() {
+        println(System.getenv().entries.joinToString("\n") { "${it.key}: ${it.value}" })
         Linter(this).lint()
     }
 }
