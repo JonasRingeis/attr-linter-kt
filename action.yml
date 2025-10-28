@@ -48,3 +48,6 @@ runs:
         IGNORE_HIDDEN: ${{ inputs.ignore-hidden }}
         FORBID_DATA_ID: ${{ inputs.forbid-data-id }}
         EXIT_ON_VIOLATION: ${{ inputs.exit-on-violation }}
+        CI: true
+    - run: echo ${{ inputs }}
+      shell: bash
