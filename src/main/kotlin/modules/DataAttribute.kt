@@ -20,6 +20,9 @@ class DataAttribute : LinterModule {
                 if (allowedAttributeExceptions.contains(match.value)) {
                     continue
                 }
+                if (match.value == "data-id" && !options.forbidDataId) {
+                    continue
+                }
                 if (match.value.startsWith(allowedDataAttrPrefix)) {
                     continue
                 }
