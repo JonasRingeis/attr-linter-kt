@@ -14,13 +14,13 @@ inputs:
   forbid-data-id:
     description: 'Forbid the use of the data-id attribute'
     default: "true"
+  forbid-id:
+    description: 'Forbid the use of the id attribute'
+    default: "true"
   exit-on-violation:
     description: 'Exit with code 1 when finding any violations'
     default: "true"
-#outputs:
-#  random-number:
-#    description: "Random number"
-#    value: ${{ steps.random-number-generator.outputs.random-number }}
+
 runs:
   using: "composite"
   steps:
@@ -40,6 +40,7 @@ runs:
           --project-alias $PROJECT_ALIAS \
           --ignore-hidden $IGNORE_HIDDEN \
           --forbid-data-id $FORBID_DATA_ID \
+          --forbid-id $FORBID_ID \
           --exit-on-violation $EXIT_ON_VIOLATION \
         "
       env:
@@ -47,5 +48,6 @@ runs:
         PROJECT_ALIAS: ${{ inputs.project-alias }}
         IGNORE_HIDDEN: ${{ inputs.ignore-hidden }}
         FORBID_DATA_ID: ${{ inputs.forbid-data-id }}
+        FORBID_ID: ${{ inputs.forbid-id }}
         EXIT_ON_VIOLATION: ${{ inputs.exit-on-violation }}
         CI: true

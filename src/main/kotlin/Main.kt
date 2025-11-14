@@ -21,7 +21,7 @@ class Cli : CliktCommand() {
 
     val ignoreHidden: Boolean by option().boolean().default(true).help("Ignore all files and directories that are hidden")
     val forbidDataId: Boolean by option().boolean().default(true).help("Forbid the use of the data-id attribute")
-    val forbidId: Boolean by option().boolean().default(true).help("Forbid the use of the data-id attribute")
+    val forbidId: Boolean by option().boolean().default(true).help("Forbid the use of the id attribute")
     val exitOnViolation: Boolean by option().boolean().default(true).help("Exit with code 1 when finding any violations")
 
     override fun run() {
