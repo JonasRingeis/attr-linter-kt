@@ -9,7 +9,7 @@ import java.io.File
 
 class DataAttribute : LinterModule {
 
-    val allowedAttributeExceptions = arrayOf("data-autotab", "data-int", "data-pinfo", "data-sheet-title", "data-value")
+    val allowedAttributeExceptions = arrayOf("data-autotab", "data-int", "data-pinfo", "data-sheet-title", "data-value", "data-qa")
 
     override fun check(files: ArrayList<File>, options: Cli): Array<LinterModuleResult> {
         val findings = arrayListOf<LinterModuleResult>()
