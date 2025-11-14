@@ -1,4 +1,4 @@
-package modules
+package modules.internal
 
 import Cli
 import java.io.File
@@ -16,8 +16,12 @@ data class LinterModuleResult (
     override fun toString(): String {
         val inCi = System.getenv("CI")?.lowercase() == "true"
 
+        val message = "Illegal attribute '$attribute' in file '$filename' at line $lineNumber\n$fullLine"
+
         return if (inCi) {
-            "::error file=$filename,line=$lineNumber::Illegal attribute '$attribute' in file '$filename' at line $lineNumber.\n$fullLine"
-        } else "Illegal attribute '$attribute' in file '$filename' at line $lineNumber\n$fullLine"
+            "::error file=$filename,line=$lineNumber::$message"
+        } else {
+            message
+        }
     }
 }
