@@ -1,5 +1,6 @@
 import modules.DataAttribute
-import modules.LinterModule
+import modules.IdAttribute
+import modules.internal.LinterModule
 import java.io.File
 import java.io.FileFilter
 import java.io.FileNotFoundException
@@ -7,7 +8,10 @@ import kotlin.system.exitProcess
 
 class Linter(
     val options: Cli,
-    val linterModules: Array<LinterModule> = arrayOf(DataAttribute()),
+    val linterModules: Array<LinterModule> = arrayOf(
+        DataAttribute(),
+        IdAttribute()
+    ),
 ) {
 
     fun lint() {
@@ -16,16 +20,16 @@ class Linter(
     }
 
     private fun runModules(allFiles: ArrayList<File>) {
-        var anyMatches = false
+        var matchesAmount = 0
+
         for (module in linterModules) {
             val moduleMatches = module.check(allFiles, options)
-            if (moduleMatches.isNotEmpty()) {
-                anyMatches = true
-            }
+            matchesAmount += moduleMatches.size
 
-            println(moduleMatches.joinToString("\n\n"))
+            println(moduleMatches.joinToString("\n\n") + "\n")
         }
-        exitProcess(if (anyMatches && options.exitOnViolation) 1 else 0)
+        println("Found $matchesAmount illegal attributes")
+        exitProcess(if (matchesAmount > 0 && options.exitOnViolation) 1 else 0)
     }
 
     fun getAllFiles(): ArrayList<File> {
