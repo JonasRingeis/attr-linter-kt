@@ -13,5 +13,5 @@ jobs:
       - uses: JonasRingeis/attr-linter-kt@main
         with:
           project-alias: 'ci'
-          target-path: './test-project'
+          target-path: './src/test/resources/test-project'
           exit-on-violation: false
