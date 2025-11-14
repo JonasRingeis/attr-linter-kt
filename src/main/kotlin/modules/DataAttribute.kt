@@ -1,6 +1,10 @@
 package modules
 
 import Cli
+import modules.internal.LinterModule
+import modules.internal.LinterModuleResult
+import modules.internal.getFullLineByMatchRange
+import modules.internal.getLineNumberByMatch
 import java.io.File
 
 class DataAttribute : LinterModule {
@@ -27,9 +31,8 @@ class DataAttribute : LinterModule {
                     continue
                 }
 
-                val beforeMatch = fileContent.take(match.range.first)
-                val lineNumber = beforeMatch.count { it == '\n' } + 1
-                val fullLine = getFullLineByMatchRange(fileContent, match)
+                val lineNumber = getLineNumberByMatch(match, fileContent)
+                val fullLine = getFullLineByMatchRange(match, fileContent)
 
                 findings.add(LinterModuleResult(match.value, file.name, lineNumber, fullLine))
             }
@@ -37,9 +40,4 @@ class DataAttribute : LinterModule {
         return findings.toTypedArray()
     }
 
-    private fun getFullLineByMatchRange(fileContent: String, match: MatchResult): String {
-        val lineStart = fileContent.take(match.range.last).lastIndexOf('\n') + 1
-        val lineEnd = fileContent.indexOf('\n', lineStart)
-        return fileContent.substring(lineStart, lineEnd).trim()
-    }
 }
